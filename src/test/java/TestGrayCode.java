@@ -40,4 +40,10 @@ public class TestGrayCode {
         List<Integer> list = grayCode.grayCode(2);
         Utils.printListInt(list);
     }
+
+    @Test
+    public void testSample2() throws Exception {
+        List<Integer> list = grayCode.grayCode(3);
+        Utils.printIntList(list);
+    }
 }

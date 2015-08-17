@@ -1,9 +1,6 @@
 package utils;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Patrick on 15/4/6.
@@ -33,7 +30,7 @@ public class Utils {
     }
 
     public static void printBits(int a, int bits) {
-        printBitsImpl(a,bits);
+        printBitsImpl(a, bits);
         System.out.println();
     }
 
@@ -52,8 +49,33 @@ public class Utils {
     public static void printBytesArray(int[] ints) {
         for (int i = 0; i != ints.length; i++) {
             System.out.print(ints[i]);
+
+            System.out.println();
         }
-        System.out.println();
+    }
+
+    public static void printListListInteger(List<List<Integer>> lists) {
+        for (List<Integer> list : lists) {
+            System.out.print("Length = " + list.size());
+            System.out.print(", [");
+            for (int i : list) {
+                System.out.print(i + ",");
+            }
+            System.out.println(']');
+        }
+    }
+
+    public static void printStringList(List<String> list) {
+        System.out.println("Size = " + list.size());
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+
+    public static void printIntList(List<Integer> list) {
+        for (int s : list) {
+            System.out.print(s);
+        }
     }
 
     public static long factorial(int a) {
@@ -85,7 +107,7 @@ public class Utils {
 
     public static void printListInt(List<Integer> list) {
         System.out.print("[");
-        for (Integer i: list) {
+        for (Integer i : list) {
             System.out.print(i + ",");
         }
         System.out.println("]");
@@ -113,5 +135,59 @@ public class Utils {
             }
         }
         return true;
+    }
+
+    public static void printStringStringList(List<List<String>> lists) {
+        for (List<String> list : lists) {
+            System.out.print("Length = " + list.size());
+            System.out.print(", [");
+            for (String i : list) {
+                System.out.print(i + ",");
+            }
+            System.out.println(']');
+        }
+    }
+
+    public static void printListStringArray(List<String[]> list) {
+        for (String[] strs : list) {
+            System.out.println("[");
+            for (String str : strs) {
+                System.out.println(str);
+            }
+            System.out.println("]");
+        }
+    }
+
+    public static List<Integer> intArrayToList(int[] ints) {
+        List<Integer> list = new ArrayList<Integer>();
+        for (int i : ints) {
+            list.add(i);
+        }
+        return list;
+    }
+
+    public static int[] rotate(int[] ints, int n) {
+        int[] nints = new int[ints.length];
+        for (int i = 0; i != n; i++) {
+            nints[i] = ints[ints.length - n + i];
+        }
+        for (int i = 0; i != ints.length - n; i++) {
+            nints[n + i] = ints[i];
+        }
+        return nints;
+    }
+
+    public static int bsearch(int[] ints, int i, int l, int r) {
+        if (l > r) {
+            return -1;
+        }
+        int mid = (l + r) / 2;
+        if (i == ints[mid]) {
+            return mid;
+        } else if (i < ints[mid]) {
+            return bsearch(ints, i, l, mid - 1);
+        } else {
+            return bsearch(ints, i, mid + 1, r);
+        }
     }
 }
